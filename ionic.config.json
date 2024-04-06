@@ -1,0 +1,7 @@
+{
+  "name": "ionic-cat-wiki",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
