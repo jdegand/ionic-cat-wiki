@@ -15,7 +15,7 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - The home route is lazy-loaded in the initial `app.routes.ts` file.  I need to look more into this, but it seems like this is more acceptable now.  I don't think it is correct to lazy-load the home route. 
 - Ionic adds generated pages directly to the `app.routes.ts`.   
 - I used the Ionic CLI to initialize the project.  Its Angular version is pretty outdated at only `17.0.2`.   
-- The breed requests work without an API key.  I don't know if this has changed or if the API has a misconfiguration.   
+- The breed requests work without an API key. To get images and some additional info, you need an API key.  
 
 ## Useful Resources
 
