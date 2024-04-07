@@ -1,21 +1,26 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>All Cat Breeds</ion-title>
+    <ion-title>Breeds</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">All Cat Breeds</ion-title>
+      <ion-title size="large">Breeds</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <main class="main">
     <ion-list class="breedGrid">
+      <!--
+      <ion-list-header>
+        <ion-label>All Cat Breeds</ion-label>
+      </ion-list-header>
+    -->
       @for (breed of breeds; track breed) {
       <ion-item button [routerLink]="['/breed', breed]">
-        {{ breed }}
+        <ion-label>{{ breed }}</ion-label>
       </ion-item>
       }
     </ion-list>

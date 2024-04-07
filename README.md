@@ -22,3 +22,5 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - [Ionic](https://ionicframework.com/docs/components) - components
 - [Ionic](https://ionic-5-full-starter-app-docs.ionicthemes.com/navigation) - navigation
 - [Forums](https://forum.ionicframework.com/t/why-does-the-default-home-page-html-have-2-ion-headers/193703/6) - why does the default home page html have 2 ion headers
+- [Stack Overflow](https://stackoverflow.com/questions/55811502/how-to-set-height-on-ion-img) - how to set height on ion img
+- [Stack Overflow](https://stackoverflow.com/questions/52539823/ionic-components-are-not-destroyed-after-navigation-to-another-page) - ionic components are not destroyed after navigation to another page

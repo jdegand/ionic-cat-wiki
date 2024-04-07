@@ -26,9 +26,8 @@
             <h1 class="searchDiv-h1">Get to know more about your cat breed</h1>
             <form (ngSubmit)="onSubmit(form)" #form="ngForm">
                 <div class="floatingGroup">
-                    <label class="floatingLabel" for="search">Enter your breed</label>
                     <ion-searchbar id="search" class="searchInput" color="light" inputmode="text" name="search" maxlength="35" ngModel
-                        required></ion-searchbar>
+                        required aria-label="Enter a breed"></ion-searchbar>
                 </div>
             </form>
         </div>
@@ -43,7 +42,7 @@
                 @for (breed of featuredBreeds; let first = $first; track breed.id) {
                 <a [routerLink]="['/breed/'+breed.name]">
                     <div class="breedDiv">
-                        <img [ngClass]="first ? 'contain' : 'cover'" class="breedImage" src={{breed.image?.url}}
+                        <ion-img [ngClass]="first ? 'contain' : 'cover'" class="breedImage" src={{breed.image?.url}}
                             alt="" />
                         <div>{{breed.name}}</div>
                     </div>
@@ -62,13 +61,13 @@
             </div>
             <div class="imageGrid">
                 <div class="image1">
-                    <img src="../assets/images/image-2.png" alt="" width="400" height="200" />
+                    <ion-img src="../assets/images/image-2.png" alt="" />
                 </div>
                 <div class="image2">
-                    <img src="../assets/images/image-3.png" alt="" width="200" height="450" />
+                    <ion-img src="../assets/images/image-3.png" alt="" />
                 </div>
                 <div class="image3">
-                    <img src="../assets/images/image-1.png" alt="" width="300" height="400" />
+                    <ion-img src="../assets/images/image-1.png" alt="" />
                 </div>
             </div>
         </section>
