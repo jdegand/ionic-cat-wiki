@@ -16,6 +16,8 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - Ionic adds generated pages directly to the `app.routes.ts`.   
 - I used the Ionic CLI to initialize the project.  Its Angular version is pretty outdated at only `17.0.2`.   
 - The breed requests work without an API key. To get images and some additional info, you need an API key.  
+- `ngOnInit` will only fire each time the page is freshly created, but not when navigated back to the page. `ngOnDestroy` will only fire when a page "popped".
+- `ionViewWillEnter` would be useful for the API requests if the response data was likely to change frequently.  I don't think that applies here.    
 
 ## Useful Resources
 

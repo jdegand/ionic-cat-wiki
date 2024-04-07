@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { map, mergeMap, forkJoin, Subscription } from 'rxjs';
 import { BubbleComponent } from '../components/bubble/bubble.component';
@@ -15,7 +15,7 @@ import { TitleCasePipe } from '@angular/common';
   templateUrl: './breed.page.html',
   styleUrl: './breed.page.scss'
 })
-export class BreedPage implements OnInit{
+export class BreedPage implements OnInit, OnDestroy {
   @Input() name = '';
   breed: Breed2[] = [];
   loading = true;
@@ -37,24 +37,18 @@ export class BreedPage implements OnInit{
         return forkJoin({ hero, images });
       })
     ).subscribe(response => {
-      setInterval(()=> console.log('here'), 500);
       this.data = response;
       this.loading = false;
       this.filteredImages = Array.from(new Set(this.data.images.map((el: Image2) => el.url).filter(el => el !== this.data.hero.url).filter(el => el !== this.data.hero.url)));
     })
   }
 
-  // change this to an ionic lifecycle hook
-  // need another one to destroy the subscription as well
   ngOnInit() {
     this.retrieveBreedData();
   }
 
-  /*
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  */
-
 
 }
