@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { map, mergeMap, forkJoin, Subscription } from 'rxjs';
 import { BubbleComponent } from '../components/bubble/bubble.component';
@@ -15,7 +15,7 @@ import { TitleCasePipe } from '@angular/common';
   templateUrl: './breed.page.html',
   styleUrl: './breed.page.scss'
 })
-export class BreedPage implements OnInit, OnDestroy {
+export class BreedPage implements OnInit {
   @Input() name = '';
   breed: Breed2[] = [];
   loading = true;
@@ -47,7 +47,7 @@ export class BreedPage implements OnInit, OnDestroy {
     this.retrieveBreedData();
   }
 
-  ngOnDestroy() {
+  ionViewWillLeave() {
     this.subscription.unsubscribe();
   }
 
