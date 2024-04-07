@@ -19,6 +19,10 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - `ngOnInit` will only fire each time the page is freshly created, but not when navigated back to the page. `ngOnDestroy` will only fire when a page "popped".
 - `ionViewWillEnter` would be useful for the API requests if the response data was likely to change frequently.  I don't think that applies here.    
 
+## Continued Development
+
+- Last images of the `shouldSection` of homepage sometimes are not rendered.
+
 ## Useful Resources
 
 - [Ionic](https://ionicframework.com/docs/components) - components
