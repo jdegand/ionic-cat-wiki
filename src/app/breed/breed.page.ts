@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { map, mergeMap, forkJoin, Subscription } from 'rxjs';
+import { map, mergeMap, forkJoin } from 'rxjs';
 import { BubbleComponent } from '../components/bubble/bubble.component';
 import Breed2 from '../interfaces/Breed2';
 import Image2 from '../interfaces/Image2';
@@ -19,14 +19,13 @@ export class BreedPage implements OnInit {
   @Input() name = '';
   breed: Breed2[] = [];
   loading = true;
-  private subscription!: Subscription;
   data!: MergeMapResponse;
   filteredImages: string[] = [];
-
+  error = null;
   httpService = inject(ApiHttpClientService);
 
   retrieveBreedData() {
-    this.subscription = this.httpService.getBreedBySearchTerm(this.name).pipe(
+    this.httpService.getBreedBySearchTerm(this.name).pipe(
       map((breed: Breed2[]) => {
         this.breed = breed;
         return breed;
@@ -36,19 +35,21 @@ export class BreedPage implements OnInit {
         const images = this.httpService.getOtherImageUrls(breed);
         return forkJoin({ hero, images });
       })
-    ).subscribe(response => {
-      this.data = response;
-      this.loading = false;
-      this.filteredImages = Array.from(new Set(this.data.images.map((el: Image2) => el.url).filter(el => el !== this.data.hero.url).filter(el => el !== this.data.hero.url)));
+    ).subscribe({
+      next: (response) => {
+          this.data = response;
+          this.loading = false;
+          this.filteredImages = Array.from(new Set(this.data.images.map((el: Image2) => el.url).filter(el => el !== this.data.hero.url).filter(el => el !== this.data.hero.url)));
+      }, 
+      error: (err) => {
+        this.loading = false;
+        this.error = err;
+      }
     })
   }
 
   ngOnInit() {
     this.retrieveBreedData();
-  }
-
-  ionViewWillLeave() {
-    this.subscription.unsubscribe();
   }
 
 }

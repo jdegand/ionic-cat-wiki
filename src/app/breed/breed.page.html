@@ -11,12 +11,16 @@
     </ion-toolbar>
   </ion-header>
 
+  @if (loading) {
+  <section class="loading-section">
+    <h1>Loading...</h1>
+  </section>
+  } @else if(!loading && error){
+  <section>
+    <h1>Error fetching {{name | titlecase}}. Check your spelling or the list of breeds to see if the breed is included.</h1>
+  </section>
+  } @else {
   <main>
-    @if (loading) {
-    <section class="loading-section">
-      <h1>Loading...</h1>
-    </section>
-    } @else {
     <div class="topGrid">
       <div>
         <img src={{data.hero.url}} alt="" width="400" height="400" class="radius">
@@ -46,7 +50,6 @@
         }
       </div>
     </section>
-    }
   </main>
-
+  }
 </ion-content>

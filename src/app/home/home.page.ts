@@ -5,7 +5,6 @@ import { IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonSearchbar, Ion
 import { Breed } from '../interfaces/Breed';
 import { ApiHttpClientService } from '../services/api-http-client.service';
 import { NgClass } from '@angular/common';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +17,6 @@ export class HomePage implements OnInit {
 
   breeds: Breed[] = [];
   featuredBreeds: Breed[] = [];
-  private subscription!: Subscription;
 
   apiHttpClientService = inject(ApiHttpClientService);
   router = inject(Router);
@@ -31,9 +29,14 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.subscription = this.apiHttpClientService.fetchBreeds().subscribe((data: Breed[]) => {
-      this.breeds = data;
-      this.featuredBreeds = data.filter((element:Breed)=> ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1 );
+    this.apiHttpClientService.fetchBreeds().subscribe({
+      next: (data: Breed[]) => {
+        this.breeds = data;
+        this.featuredBreeds = data.filter((element:Breed)=> ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1 );
+      },
+      error: (err) => {
+        console.error(err);
+      }
     })
   }
 
@@ -41,10 +44,6 @@ export class HomePage implements OnInit {
     if (form.valid) {
       this.router.navigate(['/breed', form.value.search]);
     }
-  }
-
-  ionViewWillLeave() {
-    this.subscription.unsubscribe();
   }
 
 }

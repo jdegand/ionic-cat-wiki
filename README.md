@@ -21,7 +21,7 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 
 ## Continued Development
 
-- Last images of the `shouldSection` of homepage sometimes are not rendered.
+- Last images of the `shouldSection` in the homepage are not rendered sometimes.
 
 ## Useful Resources
 
@@ -30,3 +30,4 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - [Forums](https://forum.ionicframework.com/t/why-does-the-default-home-page-html-have-2-ion-headers/193703/6) - why does the default home page html have 2 ion headers
 - [Stack Overflow](https://stackoverflow.com/questions/55811502/how-to-set-height-on-ion-img) - how to set height on ion img
 - [Stack Overflow](https://stackoverflow.com/questions/52539823/ionic-components-are-not-destroyed-after-navigation-to-another-page) - ionic components are not destroyed after navigation to another page
+- [Stack Overflow](https://stackoverflow.com/questions/61104129/is-it-necessary-to-unsubscribe-complete-in-a-backend-service-to-prevent-side-eff) - is it necessary to unsubscribe complete in a backend service to prevent side eff
