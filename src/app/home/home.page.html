@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header [translucent]="true">
     <ion-toolbar>
         <ion-title>
             <ion-icon name="Cat Wiki" aria-hidden="true" src="../../assets/images/CatwikiLogo.svg"></ion-icon>
@@ -17,17 +17,11 @@
 
     <div><!--id="container"-->
         <div class="searchDiv">
-            <picture class="bgImage">
-                <source media="(min-width: 1400px)" srcset="../assets/images/HeroImage-lg.png">
-                <source media="(min-width: 768px)" srcset="../assets/images/HeroImage-md.png">
-                <img src="../assets/images/HeroImage-sm.png">
-            </picture>
-            <img class="logo-white" src="../assets/images/CatwikiLogoWhite.svg" alt="" />
             <h1 class="searchDiv-h1">Get to know more about your cat breed</h1>
             <form (ngSubmit)="onSubmit(form)" #form="ngForm">
                 <div class="floatingGroup">
                     <ion-searchbar id="search" class="searchInput" color="light" inputmode="text" name="search"
-                        maxlength="35" ngModel required aria-label="Enter a breed"></ion-searchbar>
+                        maxlength="35" ngModel required placeholder="Enter a breed" aria-label="Enter a breed"></ion-searchbar>
                 </div>
             </form>
         </div>

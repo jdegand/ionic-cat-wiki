@@ -31,3 +31,4 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - [Stack Overflow](https://stackoverflow.com/questions/55811502/how-to-set-height-on-ion-img) - how to set height on ion img
 - [Stack Overflow](https://stackoverflow.com/questions/52539823/ionic-components-are-not-destroyed-after-navigation-to-another-page) - ionic components are not destroyed after navigation to another page
 - [Stack Overflow](https://stackoverflow.com/questions/61104129/is-it-necessary-to-unsubscribe-complete-in-a-backend-service-to-prevent-side-eff) - is it necessary to unsubscribe complete in a backend service to prevent side eff
+- [YouTube](https://www.youtube.com/watch?v=nxA5Y1pR-dI) - Styling Ionic Components in Angular with CSS Variables

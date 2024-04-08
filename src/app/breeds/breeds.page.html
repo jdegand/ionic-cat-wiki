@@ -11,19 +11,17 @@
     </ion-toolbar>
   </ion-header>
 
-  <main class="main">
-    <ion-list class="breedGrid">
-      <!--
+  <ion-list class="breed-list">
+    <!--
       <ion-list-header>
         <ion-label>All Cat Breeds</ion-label>
       </ion-list-header>
     -->
-      @for (breed of breeds; track breed) {
-      <ion-item button [routerLink]="['/breed', breed]">
-        <ion-label>{{ breed }}</ion-label>
-      </ion-item>
-      }
-    </ion-list>
-  </main>
-  
+    @for (breed of breeds; track breed) {
+    <ion-item button [routerLink]="['/breed', breed]">
+      <ion-label>{{ breed }}</ion-label>
+    </ion-item>
+    }
+  </ion-list>
+
 </ion-content>
