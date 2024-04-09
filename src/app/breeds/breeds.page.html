@@ -11,17 +11,24 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-searchbar [debounce]="500" (ionInput)="handleInput($event)"></ion-searchbar>
+  
+  @if(results){
+  <ion-list class="results-list">
+    @for (breed of results; track breed) {
+    <ion-item button [routerLink]="['/breed', breed]">
+      <ion-label>{{ breed }}</ion-label>
+    </ion-item>
+    }
+  </ion-list>
+  }@else{
   <ion-list class="breed-list">
-    <!--
-      <ion-list-header>
-        <ion-label>All Cat Breeds</ion-label>
-      </ion-list-header>
-    -->
     @for (breed of breeds; track breed) {
     <ion-item button [routerLink]="['/breed', breed]">
       <ion-label>{{ breed }}</ion-label>
     </ion-item>
     }
   </ion-list>
+  }
 
 </ion-content>

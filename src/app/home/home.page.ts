@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonSearchbar, IonImg } from '@ionic/angular/standalone';
+import { IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg } from '@ionic/angular/standalone';
 import { Breed } from '../interfaces/Breed';
 import { ApiHttpClientService } from '../services/api-http-client.service';
 import { NgClass } from '@angular/common';
@@ -11,7 +11,7 @@ import { NgClass } from '@angular/common';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonSearchbar, IonImg, NgClass, RouterLink, FormsModule],
+  imports: [IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, NgClass, RouterLink, FormsModule],
 })
 export class HomePage implements OnInit {
 
@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
     this.apiHttpClientService.fetchBreeds().subscribe({
       next: (data: Breed[]) => {
         this.breeds = data;
-        this.featuredBreeds = data.filter((element:Breed)=> ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1 );
+        this.featuredBreeds = data.filter((element: Breed) => ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1);
       },
       error: (err) => {
         console.error(err);
