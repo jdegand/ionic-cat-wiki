@@ -1,25 +1,28 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg } from '@ionic/angular/standalone';
+import { IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, IonButton } from '@ionic/angular/standalone';
 import { Breed } from '../interfaces/Breed';
 import { ApiHttpClientService } from '../services/api-http-client.service';
 import { NgClass } from '@angular/common';
+import { addIcons } from 'ionicons';
+import { searchOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, NgClass, RouterLink, FormsModule],
+  imports: [IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, IonButton, NgClass, RouterLink, FormsModule],
 })
 export class HomePage implements OnInit {
 
   breeds: Breed[] = [];
   featuredBreeds: Breed[] = [];
 
-  apiHttpClientService = inject(ApiHttpClientService);
-  router = inject(Router);
+  constructor(private router: Router, private apiHttpClientService: ApiHttpClientService) {
+    addIcons({ searchOutline });
+  }
 
   @ViewChild('form')
   public userForm!: NgForm;
@@ -34,7 +37,7 @@ export class HomePage implements OnInit {
         this.breeds = data;
         this.featuredBreeds = data.filter((element: Breed) => ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1);
       },
-      error: (err) => {
+      error: (err: unknown) => {
         console.error(err);
       }
     })

@@ -17,7 +17,8 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - I used the Ionic CLI to initialize the project.  Its Angular version is pretty outdated at only `17.0.2`.   
 - The breed requests work without an API key. To get images and some additional info, you need an API key.  
 - `ngOnInit` will only fire each time the page is freshly created, but not when navigated back to the page. `ngOnDestroy` will only fire when a page "popped".
-- `ionViewWillEnter` would be useful for the API requests if the response data was likely to change frequently.  I don't think that applies here.    
+- `ionViewWillEnter` would be useful for the API requests if the response data was likely to change frequently.  I don't think that applies here.  
+- Doesn't seem like you can use the `inject` function to enable icons in your app.  `addIcons` is function you need to call in the constructor to be able to reference an icon by name in your template.  See [the Ionic docs](https://ionicframework.com/docs/angular/build-options#usage-with-standalone-based-applications) for more.  
 
 ## Continued Development
 
@@ -32,3 +33,4 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - [Stack Overflow](https://stackoverflow.com/questions/52539823/ionic-components-are-not-destroyed-after-navigation-to-another-page) - ionic components are not destroyed after navigation to another page
 - [Stack Overflow](https://stackoverflow.com/questions/61104129/is-it-necessary-to-unsubscribe-complete-in-a-backend-service-to-prevent-side-eff) - is it necessary to unsubscribe complete in a backend service to prevent side eff
 - [YouTube](https://www.youtube.com/watch?v=nxA5Y1pR-dI) - Styling Ionic Components in Angular with CSS Variables
+- [Github](https://github.com/ionic-team/ionicons/issues/887) - docs: document addIcons usage
