@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonSpinner } from '@ionic/angular/standalone';
 import { map, mergeMap, forkJoin } from 'rxjs';
 import { BubbleComponent } from '../components/bubble/bubble.component';
 import Breed2 from '../interfaces/Breed2';
@@ -11,7 +11,7 @@ import { TitleCasePipe } from '@angular/common';
 @Component({
   selector: 'app-breed',
   standalone: true,
-  imports: [BubbleComponent, IonContent, IonHeader, IonTitle, IonToolbar, TitleCasePipe],
+  imports: [BubbleComponent, IonContent, IonHeader, IonTitle, IonToolbar, TitleCasePipe, IonSpinner],
   templateUrl: './breed.page.html',
   styleUrl: './breed.page.scss'
 })
@@ -21,7 +21,7 @@ export class BreedPage implements OnInit {
   loading = true;
   data!: MergeMapResponse;
   filteredImages: string[] = [];
-  error = null;
+  error: unknown;
   httpService = inject(ApiHttpClientService);
 
   retrieveBreedData() {
@@ -36,12 +36,12 @@ export class BreedPage implements OnInit {
         return forkJoin({ hero, images });
       })
     ).subscribe({
-      next: (response) => {
+      next: (response: MergeMapResponse) => {
           this.data = response;
           this.loading = false;
           this.filteredImages = Array.from(new Set(this.data.images.map((el: Image2) => el.url).filter(el => el !== this.data.hero.url).filter(el => el !== this.data.hero.url)));
       }, 
-      error: (err) => {
+      error: (err: unknown) => {
         this.loading = false;
         this.error = err;
       }

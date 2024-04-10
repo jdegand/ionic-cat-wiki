@@ -12,15 +12,15 @@
   </ion-header>
 
   @if (loading) {
-  <section class="loading-section">
-    <h1>Loading...</h1>
+  <section class="loading-section ion-padding">
+    <ion-spinner name="circular"></ion-spinner>
   </section>
   } @else if(!loading && error){
-  <section>
+  <section class="ion-padding">
     <h1>Error fetching {{name | titlecase}}. Check your spelling or the list of breeds to see if the breed is included.</h1>
   </section>
   } @else {
-  <main>
+  <main class="ion-padding">
     <div class="topGrid">
       <div>
         <img src={{data.hero.url}} alt="" width="400" height="400" class="radius">
