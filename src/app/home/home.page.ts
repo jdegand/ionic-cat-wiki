@@ -27,10 +27,6 @@ export class HomePage implements OnInit {
   @ViewChild('form')
   public userForm!: NgForm;
 
-  handleSuggestion = (event: any) => {
-    this.userForm.form.controls['search'].setValue(event.target.innerText);
-  }
-
   ngOnInit() {
     this.apiHttpClientService.fetchBreeds().subscribe({
       next: (data: Breed[]) => {

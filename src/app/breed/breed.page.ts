@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonSpinner } from '@ionic/angular/standalone';
 import { map, mergeMap, forkJoin } from 'rxjs';
 import { BubbleComponent } from '../components/bubble/bubble.component';
@@ -22,7 +22,8 @@ export class BreedPage implements OnInit {
   data!: MergeMapResponse;
   filteredImages: string[] = [];
   error: unknown;
-  httpService = inject(ApiHttpClientService);
+
+  constructor(private httpService: ApiHttpClientService){}
 
   retrieveBreedData() {
     this.httpService.getBreedBySearchTerm(this.name).pipe(
