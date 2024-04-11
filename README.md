@@ -28,9 +28,21 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 
 - [Ionic](https://ionicframework.com/docs/components) - components
 - [Ionic](https://ionic-5-full-starter-app-docs.ionicthemes.com/navigation) - navigation
+- [Ionic](https://ionicframework.com/docs/angular/testing) - testing
 - [Forums](https://forum.ionicframework.com/t/why-does-the-default-home-page-html-have-2-ion-headers/193703/6) - why does the default home page html have 2 ion headers
 - [Stack Overflow](https://stackoverflow.com/questions/55811502/how-to-set-height-on-ion-img) - how to set height on ion img
 - [Stack Overflow](https://stackoverflow.com/questions/52539823/ionic-components-are-not-destroyed-after-navigation-to-another-page) - ionic components are not destroyed after navigation to another page
 - [Stack Overflow](https://stackoverflow.com/questions/61104129/is-it-necessary-to-unsubscribe-complete-in-a-backend-service-to-prevent-side-eff) - is it necessary to unsubscribe complete in a backend service to prevent side eff
 - [YouTube](https://www.youtube.com/watch?v=nxA5Y1pR-dI) - Styling Ionic Components in Angular with CSS Variables
 - [Github](https://github.com/ionic-team/ionicons/issues/887) - docs: document addIcons usage
+- [Stack Overflow](https://stackoverflow.com/questions/38356084/how-to-unit-test-a-component-that-depends-on-parameters-from-activatedroute) - how to unit test a component that depends on parameters from activatedroute
+- [Medium](https://blog.angular.io/advancements-in-the-angular-router-5d69ec4c032) - advancements in the angular router
+- [YouTube](https://www.youtube.com/watch?v=DsOxW9TKroo) - How do I test Components & Routing with the RouterTestingHarness
+- [Dev.to](https://dev.to/this-is-angular/testing-routed-components-with-routertestingharness-22dl?source=post_page-----4760e83ffd80--------------------------------) - testing routed component with routertestingharness
+- [Stack Overflow](https://stackoverflow.com/questions/71133600/importing-ionicmodule-forroot-in-tests-causes-them-to-fail-if-more-then-one-t) - importing ionicmodule forroot in tests causes them to fail if more then one t
+- [Devdactic](https://devdactic.com/write-unit-tests-ionic-angular) - write unit tests ionic angular
+- [Stack Overflow](https://stackoverflow.com/questions/77395557/unit-test-angular-standalone-component-overriding-provider-not-used) - unit test angular standalone component overriding provider not used
+- [Angular Docs](https://angular.io/api/router/testing/RouterTestingHarness) - RouterTestingHarness
+- [Angular Dev](https://angular.dev/guide/testing/components-scenarios#testing-with-the-routertestingharness) - components-scenarios routertestingharness
+- [Angular Docs](https://angular.io/guide/testing-services) - testing services
+- [Angular Docs](https://angular.io/guide/http-test-requests) - http test requests

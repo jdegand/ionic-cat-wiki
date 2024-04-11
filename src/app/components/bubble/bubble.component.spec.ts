@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
 
 import { BubbleComponent } from './bubble.component';
 
@@ -9,9 +8,8 @@ describe('BubbleComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BubbleComponent ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+      imports: [BubbleComponent]
+    }).compileComponents(); // compileComponents returns a promise that is why you need async
 
     fixture = TestBed.createComponent(BubbleComponent);
     component = fixture.componentInstance;

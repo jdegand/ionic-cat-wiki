@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -13,18 +13,10 @@ export class ApiHttpClientService {
 
   private base_url = 'https://api.thecatapi.com/v1/';
 
-  http = inject(HttpClient)
+  constructor(private http: HttpClient){}
 
   fetchBreeds(): Observable<Breed[]> {
     return this.http.get<Breed[]>(this.base_url + 'breeds', {
-      headers: {
-        "x-api-key": environment.apiKey
-      }
-    })
-  }
-
-  fetchBreed(): Observable<Breed> {
-    return this.http.get<Breed>(this.base_url + 'breeds', {
       headers: {
         "x-api-key": environment.apiKey
       }
