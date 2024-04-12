@@ -3,7 +3,7 @@ import { HttpTestingController, HttpClientTestingModule } from "@angular/common/
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { BreedPage } from "./breed.page";
 import { ApiHttpClientService } from "../services/api-http-client.service";
-import { of } from "rxjs";
+import { of, throwError } from "rxjs";
 
 describe('BreedPage', () => {
   let component: BreedPage;
@@ -490,13 +490,11 @@ describe('BreedPage', () => {
   });
 
   it('should handle errors correctly', () => {
-    const error = new Error('An error occurred');
+    const error = new Error('GetBreed Error');
 
-    spyOn(apiHttpClientService, 'getBreedBySearchTerm').and.returnValue(of([]));
-
-    // problem here: method only expects an Image -> using of({}) doesn't work
-    spyOn(apiHttpClientService, 'getHeroImage').and.returnValue(of());
-    spyOn(apiHttpClientService, 'getOtherImageUrls').and.returnValue(of());
+    spyOn(apiHttpClientService, 'getBreedBySearchTerm').and.returnValue(throwError(() => new Error("GetBreed Error")));
+    spyOn(apiHttpClientService, 'getHeroImage').and.returnValue(throwError(() => new Error("GetHero Error")));
+    spyOn(apiHttpClientService, 'getOtherImageUrls').and.returnValue(throwError(() => new Error("OtherImages Error")));
 
     component.name = 'invalid search term';
     component.ngOnInit();

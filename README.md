@@ -49,3 +49,4 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - [Stack Overflow](https://stackoverflow.com/questions/76429458/karma-angular-test-router-navigate) - karma angular test router navigate
 - [YouTube](https://www.youtube.com/watch?v=GT8NXCQRXTw) - Chapter 18 Template Driven Form | Unit Test | Angular | Jasmine | Karma
 - [Stack Overflow](https://stackoverflow.com/questions/54642650/spec-has-no-expectation-console-error-although-expect-is-present) - spec has no expectation console eror although expect is present
+- [Stack Overflow](https://stackoverflow.com/questions/39960146/testing-error-case-with-observables-in-services) - testing error case with observables in services
