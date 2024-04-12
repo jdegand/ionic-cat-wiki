@@ -485,13 +485,16 @@ describe('BreedPage', () => {
 
     expect(component.data).toEqual({ hero: heroImage, images: otherImages });
     expect(component.loading).toBeFalse();
-    //expect(component.filteredImages).toEqual(otherImages);
+    // expect(component.filteredImages).toEqual(otherImages);
+    // has error => 'number' index signatures are incompatible.
   });
 
   it('should handle errors correctly', () => {
     const error = new Error('An error occurred');
 
     spyOn(apiHttpClientService, 'getBreedBySearchTerm').and.returnValue(of([]));
+
+    // problem here: method only expects an Image -> using of({}) doesn't work
     spyOn(apiHttpClientService, 'getHeroImage').and.returnValue(of());
     spyOn(apiHttpClientService, 'getOtherImageUrls').and.returnValue(of());
 
