@@ -19,6 +19,7 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - `ngOnInit` will only fire each time the page is freshly created, but not when navigated back to the page. `ngOnDestroy` will only fire when a page "popped".
 - `ionViewWillEnter` would be useful for the API requests if the response data was likely to change frequently.  I don't think that applies here.  
 - Doesn't seem like you can use the `inject` function to enable icons in your app.  `addIcons` is function you need to call in the constructor to be able to reference an icon by name in your template.  See [the Ionic docs](https://ionicframework.com/docs/angular/build-options#usage-with-standalone-based-applications) for more.  
+- Tests with template-driven forms need to be async.  Template forms are not available immediately like reactive forms.  
 
 ## Continued Development
 
@@ -50,3 +51,5 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - [YouTube](https://www.youtube.com/watch?v=GT8NXCQRXTw) - Chapter 18 Template Driven Form | Unit Test | Angular | Jasmine | Karma
 - [Stack Overflow](https://stackoverflow.com/questions/54642650/spec-has-no-expectation-console-error-although-expect-is-present) - spec has no expectation console eror although expect is present
 - [Stack Overflow](https://stackoverflow.com/questions/39960146/testing-error-case-with-observables-in-services) - testing error case with observables in services
+- [Stack Overflow](https://stackoverflow.com/questions/49430213/error-expected-no-open-requests-found-1) - error expected no open requests found 1
+- [Stack Overflow](https://stackoverflow.com/questions/14519203/spying-on-console-error-with-jasmine) - spying on console error with jasmine

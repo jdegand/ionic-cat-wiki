@@ -4,6 +4,8 @@ import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { HomePage } from "./home.page";
 import { Router, provideRouter } from "@angular/router";
 import { FormsModule } from "@angular/forms";
+//import { ApiHttpClientService } from "../services/api-http-client.service";
+
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -11,10 +13,11 @@ describe('HomePage', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let router: Router;
+  //let apiHttpClientService: ApiHttpClientService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, HomePage, FormsModule], // HttpClientTestingModule, 
+      imports: [HttpClientTestingModule, HomePage, FormsModule],
       providers: [provideRouter([])]
     });
 
@@ -23,6 +26,7 @@ describe('HomePage', () => {
     httpClient = TestBed.inject(HttpClient);
     router = TestBed.inject(Router);
     httpTestingController = TestBed.inject(HttpTestingController);
+    //apiHttpClientService = TestBed.inject(ApiHttpClientService);
   });
 
   afterEach(() => {
@@ -30,7 +34,7 @@ describe('HomePage', () => {
   });
 
   it('should submit', waitForAsync(() => {
-    spyOn(component, 'ngOnInit').and.stub();
+    ///spyOn(component, 'ngOnInit').and.stub();
     const navigateSpy = spyOn(router, 'navigate');
     fixture.detectChanges();
     fixture.whenStable().then(() => {
@@ -238,7 +242,8 @@ describe('HomePage', () => {
       }
     ]
 
-    component.ngOnInit();
+    //component.ngOnInit();
+    fixture.detectChanges();
 
     const req = httpTestingController.expectOne('https://api.thecatapi.com/v1/breeds');
     expect(req.request.method).toEqual('GET');
@@ -248,6 +253,42 @@ describe('HomePage', () => {
     expect(component.breeds).toEqual(DATA);
     expect(component.featuredBreeds).toEqual(DATA);
   });
+
+  /*
+  it('should have no data after HTTP GET request fails', waitForAsync(() => {
+    spyOn(console, 'error');
+
+    //apiHttpClientService.fetchBreeds().subscribe(() => {
+    //  expect(component.breeds).toEqual([]);
+    //  expect(component.featuredBreeds).toEqual([]);
+    //});
+
+    apiHttpClientService.fetchBreeds().subscribe({
+      next: () => fail('Failed'),
+      error: (error: HttpErrorResponse) => {
+        expect(error.message).toBe("Http failure response for https://api.thecatapi.com/v1/breeds: 500 Internal server error' to be 'Error occurred during the request'.'");
+        expect(console.error).toHaveBeenCalled();
+      }
+    });
+
+    const request = httpTestingController.expectOne(
+      'https://api.thecatapi.com/v1/breeds'
+    );
+
+    // request.error(new ErrorEvent('Failed'))
+
+    const errorResponse = new ErrorEvent('Failed to fetch data', {
+      message: 'Error occurred during the request',
+      error: new Error('Failed'),
+    });
+
+    request.flush('Failed',
+      {
+        status: 500,
+        statusText: 'Internal server error'
+      });
+  }));
+  */
 
   it('should not navigate when form is invalid', () => {
     const navigateSpy = spyOn(router, 'navigate');
