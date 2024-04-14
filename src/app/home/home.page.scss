@@ -39,8 +39,16 @@ ion-icon.icon-title {
 
 ion-input {
   width: 80%;
-  border-radius:100px;
-  background: #fff;
   border-radius: 100px;
+  background: #fff;
   padding: 0 10px;
+}
+
+ion-content::part(background) {
+  background: none;
+}
+
+ion-list {
+  width: 175px;
+  border-radius: 50px !important;
 }

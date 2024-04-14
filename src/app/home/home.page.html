@@ -17,9 +17,10 @@
         </ion-toolbar>
     </ion-header>
 
-    <div class="ion-padding"><!--id="container"-->
+    <div class="ion-padding">
         <div class="searchDiv">
             <h1 class="searchDiv-h1">Get to know more about your cat breed</h1>
+            <!--
             <form (ngSubmit)="onSubmit(form)" #form="ngForm">
                 <ion-input id="search" class="searchInput" inputmode="text" name="search" maxlength="25"
                     ngModel required label="Search">
@@ -28,6 +29,23 @@
                     </ion-button>
                 </ion-input>
             </form>
+        -->
+            <ion-content>
+                <ion-list [inset]="true">
+                    <ion-item [button]="true" [detail]="false" id="select-breed">
+                        <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+                        <ion-label>Search</ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-content>
+
+            <ion-modal trigger="select-breed" #modal>
+                <ng-template>
+                    <app-typeahead class="ion-page" title="Select breed" [items]="breedSelection"
+                        (selectionChange)="selectionChanged()" (selectionCancel)="modal.dismiss()"></app-typeahead>
+                    <!--(selectionChange)="selectionChanged($event)"-->
+                </ng-template>
+            </ion-modal>
         </div>
         <section class="breedSection">
             <h1 class="breedSection-h1">Most Searched Breeds</h1>

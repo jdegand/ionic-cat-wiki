@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancelChanges()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirmChanges()">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Filter" (ionInput)="searchbarInput($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light" class="ion-padding">
+  <ion-list id="modal-list" [inset]="true">
+    <ion-radio-group (ionChange)="radioSelected($event)">
+      @for (item of filteredItems; track item) {
+      <ion-item>
+        <ion-radio value={{item}}>{{item | titlecase}}</ion-radio>
+      </ion-item>
+      }
+    </ion-radio-group>
+  </ion-list>
+</ion-content>
+
+<!--
+<ion-item *ngFor="let item of filteredItems; trackBy: trackItems">
+  <ion-radio value={{item}}>{{item | titlecase}}</ion-radio>
+</ion-item>
+-->

@@ -20,10 +20,16 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - `ionViewWillEnter` would be useful for the API requests if the response data was likely to change frequently.  I don't think that applies here.  
 - Doesn't seem like you can use the `inject` function to enable icons in your app.  `addIcons` is function you need to call in the constructor to be able to reference an icon by name in your template.  See [the Ionic docs](https://ionicframework.com/docs/angular/build-options#usage-with-standalone-based-applications) for more.  
 - Tests with template-driven forms need to be async.  Template forms are not available immediately like reactive forms.  
+- Adding a suggestions box under or above the input is not simple.  There isn't really a good UI component to use. Other developers have used modals and positioning tricks to create something similar. This [repo](https://github.com/guylabs/ion-autocomplete) and this [repo](https://github.com/saty932/ionic2-searchbar-suggestions-above-content) may be useful for ideas.    
+- I added a [typeahead component](https://ionicframework.com/docs/api/select#typeahead-component) to replace the standard input box on the homepage.  This change matches the DevChallenges mobile design.   
+- The typeahead component makes the breeds page a little redundant.  
+-  I used radio buttons that the user could select. Users need to confirm their choice, and that triggers navigation to the breed detail page.  
+- The modal's search input does not allow a user to bypass selecting the radio button.  
 
 ## Continued Development
 
 - Last images of the `shouldSection` in the homepage are not rendered sometimes.
+- Styling.  Desktop considerations? Ion-grid?
 
 ## Useful Resources
 
@@ -53,3 +59,6 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - [Stack Overflow](https://stackoverflow.com/questions/39960146/testing-error-case-with-observables-in-services) - testing error case with observables in services
 - [Stack Overflow](https://stackoverflow.com/questions/49430213/error-expected-no-open-requests-found-1) - error expected no open requests found 1
 - [Stack Overflow](https://stackoverflow.com/questions/14519203/spying-on-console-error-with-jasmine) - spying on console error with jasmine
+- [Github](https://github.com/ionic-team/ionic-framework/issues/29217) - feat: Support input#list
+- [Github](https://github.com/ionic-team/ionic-framework/issues/28634) - feat: IonInput with typeahead feature
+- [Github](https://github.com/ionic-team/ionic-framework/issues/26648) - bug: inline modal does not open when the triggering element is added/rendered with a delay

@@ -23,12 +23,11 @@ export class BreedPage implements OnInit {
   filteredImages: string[] = [];
   error: unknown;
 
-  constructor(private httpService: ApiHttpClientService){}
+  constructor(private httpService: ApiHttpClientService) { }
 
   retrieveBreedData() {
     this.httpService.getBreedBySearchTerm(this.name).pipe(
       map((breed: Breed2[]) => {
-        console.log('breed', breed)
         this.breed = breed;
         return breed;
       }),
@@ -39,10 +38,10 @@ export class BreedPage implements OnInit {
       })
     ).subscribe({
       next: (response: MergeMapResponse) => {
-          this.data = response;
-          this.loading = false;
-          this.filteredImages = Array.from(new Set(this.data.images.map((el: Image2) => el.url).filter(el => el !== this.data.hero.url).filter(el => el !== this.data.hero.url)));
-      }, 
+        this.data = response;
+        this.loading = false;
+        this.filteredImages = Array.from(new Set(this.data.images.map((el: Image2) => el.url).filter(el => el !== this.data.hero.url).filter(el => el !== this.data.hero.url)));
+      },
       error: (err: unknown) => {
         this.loading = false;
         this.error = err;
