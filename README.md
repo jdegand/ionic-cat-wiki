@@ -62,3 +62,5 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - [Github](https://github.com/ionic-team/ionic-framework/issues/29217) - feat: Support input#list
 - [Github](https://github.com/ionic-team/ionic-framework/issues/28634) - feat: IonInput with typeahead feature
 - [Github](https://github.com/ionic-team/ionic-framework/issues/26648) - bug: inline modal does not open when the triggering element is added/rendered with a delay
+- [Stack Overflow](https://stackoverflow.com/questions/70787011/karma-jasmine-how-i-test-a-close-function-in-a-modal) - karma jasmine how i test a close function in a modal
+- [Stack Overflow](https://stackoverflow.com/questions/72473169/integration-testing-an-ionic-modal-with-jasmine-in-angular) - integration testing an ionic modal with jasmine in angular

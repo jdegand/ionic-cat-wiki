@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, IonButton, IonList, IonLabel, IonModal, IonItem, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
 import { Breed } from '../interfaces/Breed';
 import { ApiHttpClientService } from '../services/api-http-client.service';
@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
   //breeds: Breed[] = [];
   featuredBreeds: Breed[] = [];
 
-  constructor(private router: Router, private apiHttpClientService: ApiHttpClientService) {
+  constructor(private apiHttpClientService: ApiHttpClientService) {
     addIcons({ searchOutline });
   }
 

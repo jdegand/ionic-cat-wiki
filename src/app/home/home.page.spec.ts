@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { HttpTestingController, HttpClientTestingModule } from "@angular/common/http/testing";
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ComponentFixture, TestBed, } from "@angular/core/testing";
 import { HomePage } from "./home.page";
-import { Router, provideRouter } from "@angular/router";
+import { provideRouter } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 //import { ApiHttpClientService } from "../services/api-http-client.service";
 
@@ -11,19 +11,19 @@ describe('HomePage', () => {
   let fixture: ComponentFixture<HomePage>;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
-  let router: Router;
+  //let router: Router;
   //let apiHttpClientService: ApiHttpClientService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, HomePage, FormsModule],
-      providers: [provideRouter([])]
+      providers: [provideRouter([])] 
     });
 
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     httpClient = TestBed.inject(HttpClient);
-    router = TestBed.inject(Router);
+    //router = TestBed.inject(Router);
     httpTestingController = TestBed.inject(HttpTestingController);
     //apiHttpClientService = TestBed.inject(ApiHttpClientService);
   });
@@ -31,24 +31,6 @@ describe('HomePage', () => {
   afterEach(() => {
     httpTestingController.verify();
   });
-
-  /*
-  it('should submit', waitForAsync(() => {
-    ///spyOn(component, 'ngOnInit').and.stub();
-    const navigateSpy = spyOn(router, 'navigate');
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      const input = component.userForm.form.controls['search'];
-      expect(input.valid).toBeFalsy();
-      input.setValue('ragdoll');
-      expect(input.valid).toBeTruthy();
-
-      component.onSubmit(component.userForm);
-
-      expect(navigateSpy).toHaveBeenCalled(); // .toHaveBeenCalledWith(['/breed'])
-    })
-  }))
-  */
 
   it('should make an HTTP request in ngOnInit', () => {
     const DATA = [
@@ -251,7 +233,6 @@ describe('HomePage', () => {
 
     req.flush(DATA);
 
-    //expect(component.breeds).toEqual(DATA);
     expect(component.featuredBreeds).toEqual(DATA);
   });
 
@@ -291,15 +272,18 @@ describe('HomePage', () => {
   }));
   */
 
-  /*
-  it('should not navigate when form is invalid', () => {
-    const navigateSpy = spyOn(router, 'navigate');
+  it('should dismiss modal on click', () => {
+        spyOn(component, 'selectionChanged');
 
-    const button = fixture.nativeElement.querySelector('.form-button');
-    button.click();
+        const selectBreedButton = fixture.nativeElement.querySelector('#select-breed');
+        selectBreedButton.click();
+        fixture.detectChanges();
 
-    expect(navigateSpy).not.toHaveBeenCalled();
-  });
-  */
+        const cancelButton = fixture.nativeElement.querySelector('.cancel-button');
+        cancelButton.click();
+        fixture.detectChanges();
+
+        expect(component.selectionChanged).toHaveBeenCalled();
+    });
 
 });
