@@ -9,13 +9,14 @@ import { addIcons } from 'ionicons';
 import { searchOutline } from 'ionicons/icons';
 import { TypeaheadComponent } from '../components/typeahead/typeahead.component';
 import { HttpErrorResponse } from '@angular/common/http';
+import { FooterComponent } from '../components/footer/footer.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, IonButton, NgClass, RouterLink, FormsModule, IonList, IonLabel, IonModal, TypeaheadComponent, IonItem, IonGrid, IonRow, IonCol],
+  imports: [IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, IonButton, NgClass, RouterLink, FormsModule, IonList, IonLabel, IonModal, TypeaheadComponent, IonItem, IonGrid, IonRow, IonCol, FooterComponent],
 })
 export class HomePage implements OnInit {
   //breeds: Breed[] = [];
@@ -48,12 +49,6 @@ export class HomePage implements OnInit {
         console.error(err);
       }
     })
-  }
-
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      this.router.navigate(['/breed', form.value.search]);
-    }
   }
 
 }

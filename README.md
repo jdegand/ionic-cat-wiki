@@ -29,7 +29,7 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 ## Continued Development
 
 - Last images of the `shouldSection` in the homepage are not rendered sometimes.
-- Styling.  Desktop considerations? Ion-grid?
+- Styling.  Desktop considerations?
 
 ## Useful Resources
 
