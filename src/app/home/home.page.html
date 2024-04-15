@@ -43,7 +43,6 @@
                 <ng-template>
                     <app-typeahead class="ion-page" title="Select breed" [items]="breedSelection"
                         (selectionChange)="selectionChanged()" (selectionCancel)="modal.dismiss()"></app-typeahead>
-                    <!--(selectionChange)="selectionChanged($event)"-->
                 </ng-template>
             </ion-modal>
         </div>
@@ -54,19 +53,17 @@
                 <h2 class="fs48">66+ Breeds For you to discover</h2>
                 <a routerLink="/breeds">SEE MORE <span>&rarr;</span></a>
             </div>
-            <div class="breedFlex">
-                @for (breed of featuredBreeds; let first = $first; track breed.id) {
-                <a [routerLink]="['/breed/'+breed.name]">
-                    <div class="breedDiv">
+            <ion-grid class="ion-no-padding">
+                <ion-row class="ion-align-items-end">
+                    @for (breed of featuredBreeds; let first = $first; track breed.id) {
+                    <ion-col class="pointer" size="6" [routerLink]="['/breed/'+breed.name]">
                         <ion-img [ngClass]="first ? 'contain' : 'cover'" class="breedImage" src={{breed.image?.url}}
-                            alt="" />
-                        <div>{{breed.name}}</div>
-                    </div>
-                </a>
-                }@empty {
-                <p>Error: Fetching top breeds</p>
-                }
-            </div>
+                            alt=""></ion-img>
+                        <p>{{breed.name}}</p>
+                    </ion-col>
+                    }
+                </ion-row>
+            </ion-grid>
         </section>
         <section class="shouldSection">
             <div class="padding125">
@@ -76,17 +73,29 @@
                     lower your stress and anxiety levels.</p>
                 <a routerLink="/benefits">READ MORE <span>&rarr;</span></a>
             </div>
-            <div class="imageGrid">
-                <div class="image1">
-                    <ion-img src="../assets/images/image-2.png" alt=""></ion-img>
-                </div>
-                <div class="image2">
-                    <ion-img src="../assets/images/image-3.png" alt=""></ion-img>
-                </div>
-                <div class="image3">
-                    <ion-img src="../assets/images/image-1.png" alt=""></ion-img>
-                </div>
-            </div>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-img src="../assets/images/image-2.png" alt=""></ion-img>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-img src="../assets/images/image-3.png" alt=""></ion-img>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-img src="../assets/images/image-1.png" alt=""></ion-img>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </section>
     </div>
 </ion-content>
+<!--
+<ion-grid>
+  <ion-row *ngFor="let row of imageRows">
+    <ion-col *ngFor="let image of row" size="6">
+      <ion-img [src]="image.url"></ion-img>
+      <ion-label>{{image.label}}</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+-->

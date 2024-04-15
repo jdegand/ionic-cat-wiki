@@ -1,20 +1,21 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, IonButton, IonList, IonLabel, IonModal, IonItem } from '@ionic/angular/standalone';
+import { IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, IonButton, IonList, IonLabel, IonModal, IonItem, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
 import { Breed } from '../interfaces/Breed';
 import { ApiHttpClientService } from '../services/api-http-client.service';
 import { NgClass } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { searchOutline } from 'ionicons/icons';
 import { TypeaheadComponent } from '../components/typeahead/typeahead.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, IonButton, NgClass, RouterLink, FormsModule, IonList, IonLabel, IonModal, TypeaheadComponent, IonItem],
+  imports: [IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, IonButton, NgClass, RouterLink, FormsModule, IonList, IonLabel, IonModal, TypeaheadComponent, IonItem, IonGrid, IonRow, IonCol],
 })
 export class HomePage implements OnInit {
   //breeds: Breed[] = [];
@@ -24,19 +25,11 @@ export class HomePage implements OnInit {
     addIcons({ searchOutline });
   }
 
-  /*
-  @ViewChild('form')
-  userForm!: NgForm;
-  */
-
   @ViewChild('modal', { static: true }) modal!: IonModal;
-
-  //selected = '';
 
   breedSelection: string[] = ["Abyssinian", "Aegean", "American Bobtail", "American Curl", "American Shorthair", "American Wirehair", "Arabian Mau", "Australian Mist", "Balinese", "Bambino", "Bengal", "Birman", "Bombay", "British Longhair", "British Shorthair", "Burmese", "Burmilla", "California Spangled", "Chantilly-Tiffany", "Chartreux", "Chausie", "Cheetoh", "Colorpoint Shorthair", "Cornish Rex", "Cymric", "Cyprus", "Devon Rex", "Donskoy", "Dragon Li", "Egyptian Mau", "European Burmese", "Exotic Shorthair", "Havana Brown", "Himalayan", "Japanese Bobtail", "Javanese", "Khao Manee", "Korat", "Kurilian", "LaPerm", "Maine Coon", "Malayan", "Manx", "Munchkin", "Nebelung", "Norwegian Forest Cat", "Ocicat", "Oriental", "Persian", "Pixie-bob", "Ragamuffin", "Ragdoll", "Russian Blue", "Savannah", "Scottish Fold", "Selkirk Rex", "Siamese", "Siberian", "Singapura", "Snowshoe", "Somali", "Sphynx", "Tonkinese", "Toyger", "Turkish Angora", "Turkish Van", "York Chocolate"];
 
-  selectionChanged() { // breed: string
-    //this.selected = breed; // don't really need to save the choice
+  selectionChanged() {
     this.modal.dismiss();
   }
 
@@ -51,7 +44,7 @@ export class HomePage implements OnInit {
 
         this.featuredBreeds = data.filter((element: Breed) => ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1);
       },
-      error: (err: unknown) => {
+      error: (err: HttpErrorResponse) => {
         console.error(err);
       }
     })
