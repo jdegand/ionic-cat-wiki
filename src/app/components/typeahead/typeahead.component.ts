@@ -19,7 +19,7 @@ export class TypeaheadComponent implements OnInit {
   @Output() selectionCancel = new EventEmitter<void>();
   @Output() selectionChange = new EventEmitter<string>();
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) { }
 
   filteredItems: string[] = [];
   selectedValue = '';
@@ -28,12 +28,6 @@ export class TypeaheadComponent implements OnInit {
     this.filteredItems = [...this.items];
     this.selectedValue = this.selectedItem;
   }
-
-  /*
-  trackItems(index: number, item: any) {
-    return item;
-  }
-  */
 
   cancelChanges() {
     this.selectionCancel.emit();
