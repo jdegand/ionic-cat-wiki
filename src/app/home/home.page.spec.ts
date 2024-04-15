@@ -4,7 +4,9 @@ import { ComponentFixture, TestBed, } from "@angular/core/testing";
 import { HomePage } from "./home.page";
 import { provideRouter } from "@angular/router";
 import { FormsModule } from "@angular/forms";
+import { By } from "@angular/platform-browser";
 //import { ApiHttpClientService } from "../services/api-http-client.service";
+import { ModalController, AngularDelegate } from '@ionic/angular';
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -13,11 +15,12 @@ describe('HomePage', () => {
   let httpTestingController: HttpTestingController;
   //let router: Router;
   //let apiHttpClientService: ApiHttpClientService;
+  let modalController: ModalController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, HomePage, FormsModule],
-      providers: [provideRouter([])] 
+      providers: [provideRouter([]), ModalController, AngularDelegate]
     });
 
     fixture = TestBed.createComponent(HomePage);
@@ -26,6 +29,7 @@ describe('HomePage', () => {
     //router = TestBed.inject(Router);
     httpTestingController = TestBed.inject(HttpTestingController);
     //apiHttpClientService = TestBed.inject(ApiHttpClientService);
+    modalController = TestBed.inject(ModalController);
   });
 
   afterEach(() => {
@@ -272,18 +276,12 @@ describe('HomePage', () => {
   }));
   */
 
-  it('should dismiss modal on click', () => {
-        spyOn(component, 'selectionChanged');
+  it('should dismiss modal on selection change', () => {
+    spyOn(modalController, 'dismiss').and.callThrough();
 
-        const selectBreedButton = fixture.nativeElement.querySelector('#select-breed');
-        selectBreedButton.click();
-        fixture.detectChanges();
+    component.selectionChanged();
 
-        const cancelButton = fixture.nativeElement.querySelector('.cancel-button');
-        cancelButton.click();
-        fixture.detectChanges();
-
-        expect(component.selectionChanged).toHaveBeenCalled();
-    });
+    expect(modalController.dismiss).toHaveBeenCalled();
+  });
 
 });
