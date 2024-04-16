@@ -45,7 +45,7 @@ $ npm install
 # Run the app and navigate to localhost:4200
 $ npm start
 
-# Run the tests
+# Run the tests (Firefox launcher is installed)
 $ ng test --code-coverage
 ```
 
