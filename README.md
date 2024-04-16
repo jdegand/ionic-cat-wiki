@@ -24,12 +24,39 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - I added a [typeahead component](https://ionicframework.com/docs/api/select#typeahead-component) to replace the standard input box on the homepage.  This change matches the DevChallenges mobile design.   
 - The typeahead component makes the breeds page a little redundant.  
 -  I used radio buttons that the user could select. Users need to confirm their choice, and that triggers navigation to the breed detail page.  
-- The modal's search input does not allow a user to bypass selecting the radio button.  
+- The modal's search input does not allow a user to bypass selecting the radio button.    
 
 ## Continued Development
 
-- Last images of the `shouldSection` in the homepage are not rendered sometimes.
 - Styling.  Desktop considerations?
+- There are some lingering errors in the tests.  The random order of the tests can cause some tests to fail.  
+
+## How to Use
+
+```bash
+# Clone this repository
+$ git clone https://github.com/jdegand/ionic-cat-wiki.git
+
+# Install dependencies
+$ npm install
+
+# Need to add / update environment.development.ts file with an apiKey from thecatapi
+
+# Run the app and navigate to localhost:4200
+$ npm start
+
+# Run the tests
+$ ng test --code-coverage
+```
+
+### Need to add / update `environment.development.ts` file 
+
+```javascript
+export const environment = {
+    production: false,
+    apiKey: 'catapi goes here'
+};
+```
 
 ## Useful Resources
 
@@ -64,3 +91,4 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - [Github](https://github.com/ionic-team/ionic-framework/issues/26648) - bug: inline modal does not open when the triggering element is added/rendered with a delay
 - [Stack Overflow](https://stackoverflow.com/questions/70787011/karma-jasmine-how-i-test-a-close-function-in-a-modal) - karma jasmine how i test a close function in a modal
 - [Stack Overflow](https://stackoverflow.com/questions/72473169/integration-testing-an-ionic-modal-with-jasmine-in-angular) - integration testing an ionic modal with jasmine in angular
+- [RxJS Docs](https://rxjs.dev/api/index/function/throwError) - throwError

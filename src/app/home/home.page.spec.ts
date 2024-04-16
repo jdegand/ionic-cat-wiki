@@ -1,11 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { HttpTestingController, HttpClientTestingModule } from "@angular/common/http/testing";
-import { ComponentFixture, TestBed, } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync, } from "@angular/core/testing";
 import { HomePage } from "./home.page";
 import { provideRouter } from "@angular/router";
 import { FormsModule } from "@angular/forms";
-import { By } from "@angular/platform-browser";
-//import { ApiHttpClientService } from "../services/api-http-client.service";
 import { ModalController, AngularDelegate } from '@ionic/angular';
 
 describe('HomePage', () => {
@@ -13,8 +11,6 @@ describe('HomePage', () => {
   let fixture: ComponentFixture<HomePage>;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
-  //let router: Router;
-  //let apiHttpClientService: ApiHttpClientService;
   let modalController: ModalController;
 
   beforeEach(() => {
@@ -26,15 +22,24 @@ describe('HomePage', () => {
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     httpClient = TestBed.inject(HttpClient);
-    //router = TestBed.inject(Router);
     httpTestingController = TestBed.inject(HttpTestingController);
-    //apiHttpClientService = TestBed.inject(ApiHttpClientService);
     modalController = TestBed.inject(ModalController);
   });
 
   afterEach(() => {
     httpTestingController.verify();
   });
+
+  it('should handle error response correctly', waitForAsync(() => {
+    const consoleLogSpy = spyOn(console, 'log');
+
+    fixture.detectChanges(); // component.ngOnInit();
+
+    const req = httpTestingController.expectOne('https://api.thecatapi.com/v1/breeds');
+    req.flush({ errorMessage: 'Something went wrong' }, { status: 500, statusText: 'Internal Server Error' });
+
+    expect(consoleLogSpy).toHaveBeenCalledWith(jasmine.any(HttpErrorResponse));
+  }));
 
   it('should make an HTTP request in ngOnInit', () => {
     const DATA = [
@@ -229,52 +234,14 @@ describe('HomePage', () => {
       }
     ]
 
-    //component.ngOnInit();
-    fixture.detectChanges();
+    fixture.detectChanges(); // component.ngOnInit();
 
     const req = httpTestingController.expectOne('https://api.thecatapi.com/v1/breeds');
     expect(req.request.method).toEqual('GET');
 
     req.flush(DATA);
-
     expect(component.featuredBreeds).toEqual(DATA);
   });
-
-  /*
-  it('should have no data after HTTP GET request fails', waitForAsync(() => {
-    spyOn(console, 'error');
-
-    //apiHttpClientService.fetchBreeds().subscribe(() => {
-    //  expect(component.breeds).toEqual([]);
-    //  expect(component.featuredBreeds).toEqual([]);
-    //});
-
-    apiHttpClientService.fetchBreeds().subscribe({
-      next: () => fail('Failed'),
-      error: (error: HttpErrorResponse) => {
-        expect(error.message).toBe("Http failure response for https://api.thecatapi.com/v1/breeds: 500 Internal server error' to be 'Error occurred during the request'.'");
-        expect(console.error).toHaveBeenCalled();
-      }
-    });
-
-    const request = httpTestingController.expectOne(
-      'https://api.thecatapi.com/v1/breeds'
-    );
-
-    // request.error(new ErrorEvent('Failed'))
-
-    const errorResponse = new ErrorEvent('Failed to fetch data', {
-      message: 'Error occurred during the request',
-      error: new Error('Failed'),
-    });
-
-    request.flush('Failed',
-      {
-        status: 500,
-        statusText: 'Internal server error'
-      });
-  }));
-  */
 
   it('should dismiss modal on selection change', () => {
     spyOn(modalController, 'dismiss').and.callThrough();

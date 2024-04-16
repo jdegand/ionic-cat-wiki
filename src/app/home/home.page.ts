@@ -46,7 +46,7 @@ export class HomePage implements OnInit {
         this.featuredBreeds = data.filter((element: Breed) => ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1);
       },
       error: (err: HttpErrorResponse) => {
-        console.error(err);
+        console.log(err);
       }
     })
   }
