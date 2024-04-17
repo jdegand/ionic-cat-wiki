@@ -15,7 +15,6 @@ describe('TypeaheadComponent', () => {
     fixture = TestBed.createComponent(TypeaheadComponent);
     component = fixture.componentInstance;
     component.items = ["Ragdoll", "Birman", "Bombay"];
-    fixture.detectChanges();
   }));
 
   it('should create', () => {

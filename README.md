@@ -92,3 +92,4 @@ export const environment = {
 - [Stack Overflow](https://stackoverflow.com/questions/70787011/karma-jasmine-how-i-test-a-close-function-in-a-modal) - karma jasmine how i test a close function in a modal
 - [Stack Overflow](https://stackoverflow.com/questions/72473169/integration-testing-an-ionic-modal-with-jasmine-in-angular) - integration testing an ionic modal with jasmine in angular
 - [RxJS Docs](https://rxjs.dev/api/index/function/throwError) - throwError
+- [Ionic Forums](https://forum.ionicframework.com/t/exception-in-unit-tests-with-radio-buttons-config-get-is-not-a-function/208637) - exception in unit tests with radio buttons config get is not a function
