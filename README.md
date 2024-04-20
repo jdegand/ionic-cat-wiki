@@ -29,7 +29,8 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 ## Continued Development
 
 - Styling.  Desktop considerations?
-- There are some lingering errors in the tests.  The random order of the tests can cause some tests to fail.  
+- There are some lingering issues in the tests.  The random order of the tests can cause some tests to fail.  There could be some async issues.   
+- TypeScript issues.  Typing events with Ionic is not straightforward.  You have to create your own interface?  
 
 ## How to Use
 
@@ -93,3 +94,7 @@ export const environment = {
 - [Stack Overflow](https://stackoverflow.com/questions/72473169/integration-testing-an-ionic-modal-with-jasmine-in-angular) - integration testing an ionic modal with jasmine in angular
 - [RxJS Docs](https://rxjs.dev/api/index/function/throwError) - throwError
 - [Ionic Forums](https://forum.ionicframework.com/t/exception-in-unit-tests-with-radio-buttons-config-get-is-not-a-function/208637) - exception in unit tests with radio buttons config get is not a function
+- [Blog](https://www.damirscorner.com/blog/posts/20220211-CustomEventTypesInIonic.html) - CustomEventTypesInIonic
+- [Stack Overflow](https://stackoverflow.com/questions/63077247/ionic-react-how-to-properly-type-typescript-event-object-parameter-in-delegat) - ionic react how to properly type typescript event object paramteter in delegat
+- [Modern Angular](https://modernangular.com/articles/is-it-ok-to-subscribe-in-angular) - is it ok to subscribe in angular
+- [Medium](https://medium.com/angular-in-depth/angular-show-loading-indicator-when-obs-async-is-not-yet-resolved-9d8e5497dd8) - angular show loading when obs async is not yet resolved

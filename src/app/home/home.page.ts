@@ -41,7 +41,8 @@ export class HomePage implements OnInit {
         // could use the request data in place of breedSelection array
         // but the data is not changing frequently
         // I looked into this when I built my original cat wiki app
-        // but I don't think you can make a request just for the 4 breeds I need
+        // but I don't think you can make a request just for multiple breeds at once
+        // I think the manual subscribe is fine here since I always want the same 4 breeds
 
         this.featuredBreeds = data.filter((element: Breed) => ['beng', 'sava', 'norw', 'srex'].indexOf(element.id) != -1);
       },
