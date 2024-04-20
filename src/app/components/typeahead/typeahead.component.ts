@@ -3,6 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import type { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonListHeader, IonSearchbar, IonButton, IonButtons, IonCheckbox, IonRadioGroup, IonRadio } from '@ionic/angular/standalone';
+import { SearchbarCustomEvent } from 'src/app/interfaces/SearchbarCustomEvent';
 
 @Component({
   selector: 'app-typeahead',
@@ -38,8 +39,8 @@ export class TypeaheadComponent implements OnInit {
     this.router.navigate(['/breed', this.selectedValue]);
   }
 
-  searchbarInput(ev: any) {
-    this.filterList(ev.target.value);
+  searchbarInput(ev: SearchbarCustomEvent) { // null error when adding this
+    this.filterList(ev.target.value ?? ""); // this fix creates an extra branch in testing
   }
 
   filterList(searchQuery: string | undefined) {
@@ -53,7 +54,7 @@ export class TypeaheadComponent implements OnInit {
     }
   }
 
-  radioSelected(event: any) {
+  radioSelected(event: any) {  // RadioGroupCustomEvent<string>
     this.selectedValue = event.detail.value;
   }
 

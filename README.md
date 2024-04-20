@@ -23,14 +23,18 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 - Adding a suggestions box under or above the input is not simple.  There isn't really a good UI component to use. Other developers have used modals and positioning tricks to create something similar. This [repo](https://github.com/guylabs/ion-autocomplete) and this [repo](https://github.com/saty932/ionic2-searchbar-suggestions-above-content) may be useful for ideas.    
 - I added a [typeahead component](https://ionicframework.com/docs/api/select#typeahead-component) to replace the standard input box on the homepage.  This change matches the DevChallenges mobile design.   
 - The typeahead component makes the breeds page a little redundant.  
--  I used radio buttons that the user could select. Users need to confirm their choice, and that triggers navigation to the breed detail page.  
-- The modal's search input does not allow a user to bypass selecting the radio button.    
+-  I used radio buttons that the user could select. Users need to confirm their choice, and that triggers navigation to the breed detail page.
+- The modal's search input does not allow a user to bypass selecting the radio button.
+- Typing events with Ionic is not straightforward. You have to create your own interface. This creates extra difficulty in testing. Ionic has known about this issue for years, but not much progress has been made. I haven't found much great material about this. I saw one example where the developer just used `Event` and avoided trying to do it with Ionic at all.
+- Essentially, a lot of the typing solutions are not strict. You can use `$any($event)` around the event object inside the template, or you can create an interface that uses `any`. This is just done to avoid `eslint` warnings for using `any`.
+- It might actually be more clear to just use `any` and disable eslint warnings for those functions.  
+- Ionic Grid is another example where some developers recommend sticking with CSS. I try to use UI components if they are available, but it can be difficult without great documentation or examples to follow. I don't want to sink a lot of time into making a simple grid.
 
 ## Continued Development
 
-- Styling.  Desktop considerations?
-- There are some lingering issues in the tests.  The random order of the tests can cause some tests to fail.  There could be some async issues.   
-- TypeScript issues.  Typing events with Ionic is not straightforward.  You have to create your own interface?  
+- Styling.  Desktop considerations?  I have not reused my previous CSS in this project.  
+- TypeScript issues.
+- There are some lingering issues with the tests. The modal spy and the modal trigger are causing issues. I have searched for examples and haven't found much to explain the best way to test an Ionic modal. TypeScript issues stemming from Ionic event typing are also causing testing errors.
 
 ## How to Use
 
@@ -98,3 +102,5 @@ export const environment = {
 - [Stack Overflow](https://stackoverflow.com/questions/63077247/ionic-react-how-to-properly-type-typescript-event-object-parameter-in-delegat) - ionic react how to properly type typescript event object paramteter in delegat
 - [Modern Angular](https://modernangular.com/articles/is-it-ok-to-subscribe-in-angular) - is it ok to subscribe in angular
 - [Medium](https://medium.com/angular-in-depth/angular-show-loading-indicator-when-obs-async-is-not-yet-resolved-9d8e5497dd8) - angular show loading when obs async is not yet resolved
+- [Github](https://github.com/ionic-team/ionic-framework/issues/24245) - bug: Angular - Argument of type 'Event' is not assignable to parameter of type CustomEvent #24245
+- [Stack Overflow](https://stackoverflow.com/questions/54496398/typescript-type-string-undefined-is-not-assignable-to-type-string) - typescript type string undefined is not assignable to type string

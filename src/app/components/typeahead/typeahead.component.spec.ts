@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { TypeaheadComponent } from './typeahead.component';
+import { SearchbarCustomEvent } from 'src/app/interfaces/SearchbarCustomEvent';
 
 describe('TypeaheadComponent', () => {
   let component: TypeaheadComponent;
@@ -31,23 +32,27 @@ describe('TypeaheadComponent', () => {
   });
 
   it('should set filteredItems to items when searchQuery is undefined', () => {
+    fixture.detectChanges();
     component.filterList(undefined);
     expect(component.filteredItems).toEqual(component.items);
   });
 
   it('should filter items based on searchQuery', () => {
+    fixture.detectChanges();
     component.filterList('ragdoll');
     expect(component.filteredItems).toEqual(['Ragdoll']);
   });
 
   it('should filter items based on searchQuery (case insensitive)', () => {
+    fixture.detectChanges();
     component.filterList('BIRMAN');
     expect(component.filteredItems).toEqual(['Birman']);
   });
 
   it('should call filterList with the input value from the event', () => {
     const inputValue = 'bombay';
-    const event = { target: { value: inputValue } };
+    //const event = { target: { value: inputValue } };
+    const event = { detail: { value: inputValue } } as SearchbarCustomEvent;
 
     spyOn(component, 'filterList');
 
@@ -58,6 +63,8 @@ describe('TypeaheadComponent', () => {
 
   it('should update selectedValue with event detail value', () => {
     const mockEvent = { detail: { value: 'bombay' } };
+    // const mockEvent = { detail: { value: 'bombay' } } as RadioGroupCustomEvent; 
+    // missing target property -> needs to be HTMLIonRadioGroupElement
 
     component.radioSelected(mockEvent);
 
