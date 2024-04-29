@@ -1,6 +1,24 @@
 # Ionic Cat Wiki
 
-This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/angular-cat-wiki).  
+This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/angular-cat-wiki). 
+
+## Screenshots
+
+![](screenshots/ionic-cat-wiki-1.png  "Home Page")
+
+***
+
+![](screenshots/ionic-cat-wiki-2.png "Typeahead Component")
+
+***
+
+![](screenshots/ionic-cat-wiki-3.png "Detail Page")
+
+***
+
+![](screenshots/ionic-cat-wiki-4.png "Benefits FAQ Page")
+
+***
 
 ## Built With
 
