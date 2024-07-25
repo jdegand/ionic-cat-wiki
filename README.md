@@ -1,22 +1,22 @@
 # Ionic Cat Wiki
 
-This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/angular-cat-wiki). 
+This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/angular-cat-wiki).
 
 ## Screenshots
 
-![](screenshots/ionic-cat-wiki-1.png  "Home Page")
+![Home Page](screenshots/ionic-cat-wiki-1.png  "Home Page")
 
 ***
 
-![](screenshots/ionic-cat-wiki-2.png "Typeahead Component")
+![Typeahead Component](screenshots/ionic-cat-wiki-2.png "Typeahead Component")
 
 ***
 
-![](screenshots/ionic-cat-wiki-3.png "Detail Page")
+![Detail Page](screenshots/ionic-cat-wiki-3.png "Detail Page")
 
 ***
 
-![](screenshots/ionic-cat-wiki-4.png "Benefits FAQ Page")
+![Benefits FAQ Page](screenshots/ionic-cat-wiki-4.png "Benefits FAQ Page")
 
 ***
 
@@ -30,18 +30,18 @@ This is an Ionic conversion of my [Angular Cat Wiki](https://github.com/jdegand/
 
 - After install, there was a warning in the `angular.json` about `progress` not being allowed.  This [Stack Overflow](https://stackoverflow.com/questions/71711355/ionic-6-ci-property-progress-is-not-allowed) has been unanswered for over a year.  I will try to find an answer and I will leave the `progress` property in the file for now.  
 - I used the `application` builder in the `angular.json`.
-- The home route is lazy-loaded in the initial `app.routes.ts` file.  I need to look more into this, but it seems like this is more acceptable now.  I don't think it is correct to lazy-load the home route. 
-- Ionic adds generated pages directly to the `app.routes.ts`.   
-- I used the Ionic CLI to initialize the project.  Its Angular version is pretty outdated at only `17.0.2`.   
+- The home route is lazy-loaded in the initial `app.routes.ts` file.  I need to look more into this, but it seems like this is more acceptable now.  I don't think it is correct to lazy-load the home route.
+- Ionic adds generated pages directly to the `app.routes.ts`.
+- I used the Ionic CLI to initialize the project.  Its Angular version is pretty outdated at only `17.0.2`.
 - The breed requests work without an API key. To get images and some additional info, you need an API key.  
 - `ngOnInit` will only fire each time the page is freshly created, but not when navigated back to the page. `ngOnDestroy` will only fire when a page is "popped".
 - `ionViewWillEnter` would be useful for the API requests if the response data was likely to change frequently.  I don't think that applies here.  
 - Doesn't seem like you can use the `inject` function to enable icons in your app.  `addIcons` is a function that you need to call in the constructor to be able to reference an icon by name in your template.  See [the Ionic docs](https://ionicframework.com/docs/angular/build-options#usage-with-standalone-based-applications) for more.  
 - Tests with template-driven forms need to be async.  Template forms are not available immediately like reactive forms.  
-- Adding a suggestions box under or above the input is not simple.  There isn't really a good UI component to use. Other developers have used modals and positioning tricks to create something similar. This [repo](https://github.com/guylabs/ion-autocomplete) and this [repo](https://github.com/saty932/ionic2-searchbar-suggestions-above-content) may be useful for ideas.    
-- I added a [typeahead component](https://ionicframework.com/docs/api/select#typeahead-component) to replace the standard input box on the homepage.  This change matches the DevChallenges mobile design.   
+- Adding a suggestions box under or above the input is not simple.  There isn't really a good UI component to use. Other developers have used modals and positioning tricks to create something similar. This [repo](https://github.com/guylabs/ion-autocomplete) and this [repo](https://github.com/saty932/ionic2-searchbar-suggestions-above-content) may be useful for ideas.
+- I added a [typeahead component](https://ionicframework.com/docs/api/select#typeahead-component) to replace the standard input box on the homepage.  This change matches the DevChallenges mobile design.
 - The typeahead component makes the breeds page a little redundant.  
--  I used radio buttons that the user could select. Users need to confirm their choice, and that triggers navigation to the breed detail page.
+- I used radio buttons that the user could select. Users need to confirm their choice, and that triggers navigation to the breed detail page.
 - The modal's search input does not allow a user to bypass selecting the radio button.
 - Typing events with Ionic is not straightforward. You have to create your own interface. This creates extra difficulty in testing. Ionic has known about this issue for years, but not much progress has been made. I haven't found much great material about this. I saw one example where the developer just used `Event` and avoided trying to do it with Ionic at all.
 - Essentially, a lot of the typing solutions are not strict. You can use `$any($event)` around the event object inside the template, or you can create an interface that uses `any`. This is just done to avoid `eslint` warnings for using `any`.
@@ -72,7 +72,7 @@ $ npm start
 $ ng test --code-coverage
 ```
 
-### Need to add / update `environment.development.ts` file 
+### Need to add / update `environment.development.ts` file
 
 ```javascript
 export const environment = {
