@@ -1,4 +1,3 @@
-import { HttpClient } from "@angular/common/http";
 import { HttpTestingController, HttpClientTestingModule } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { BreedPage } from "./breed.page";
@@ -8,7 +7,6 @@ import { of, throwError } from "rxjs";
 describe('BreedPage', () => {
   let component: BreedPage;
   let fixture: ComponentFixture<BreedPage>;
-  let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let apiHttpClientService: ApiHttpClientService;
 
@@ -19,7 +17,6 @@ describe('BreedPage', () => {
 
     fixture = TestBed.createComponent(BreedPage);
     component = fixture.componentInstance;
-    httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
     apiHttpClientService = TestBed.inject(ApiHttpClientService);
   });
