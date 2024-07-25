@@ -5,7 +5,6 @@ import { HomePage } from "./home.page";
 import { provideRouter } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { ModalController, AngularDelegate } from '@ionic/angular';
-import { By } from "@angular/platform-browser";
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -34,7 +33,7 @@ describe('HomePage', () => {
   it('should handle error response correctly', waitForAsync(() => {
     const consoleLogSpy = spyOn(console, 'log');
 
-    fixture.detectChanges(); // component.ngOnInit();
+    fixture.detectChanges();
 
     const req = httpTestingController.expectOne('https://api.thecatapi.com/v1/breeds');
     req.flush({ errorMessage: 'Something went wrong' }, { status: 500, statusText: 'Internal Server Error' });
@@ -235,7 +234,7 @@ describe('HomePage', () => {
       }
     ]
 
-    fixture.detectChanges(); // component.ngOnInit();
+    fixture.detectChanges();
 
     const req = httpTestingController.expectOne('https://api.thecatapi.com/v1/breeds');
     expect(req.request.method).toEqual('GET');
@@ -251,24 +250,5 @@ describe('HomePage', () => {
 
     expect(modalController.dismiss).toHaveBeenCalled();
   });
-
-  /*
-  it('should dismiss modal on selection change', () => {
-
-    // the modal is not visible -> can't find the button?
-
-    const searchButton = fixture.debugElement.query(By.css('#select-breed')).nativeElement;
-
-    const cancelChangesSpy = spyOn(component, 'selectionChanged');
-
-    searchButton.click()
-    fixture.detectChanges();
-    const cancelButton = fixture.debugElement.query(By.css('.cancel-button'));
-
-    cancelButton.triggerEventHandler('click', null);
-
-    expect(cancelChangesSpy).toHaveBeenCalled();
-  });
-  */
 
 });
