@@ -51,7 +51,6 @@ describe('TypeaheadComponent', () => {
 
   it('should call filterList with the input value from the event', () => {
     const inputValue = 'bombay';
-    //const event = { target: { value: inputValue } };
     const event = { detail: { value: inputValue } } as SearchbarCustomEvent;
 
     spyOn(component, 'filterList');
