@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpErrorResponse } from "@angular/common/http";
 import { HttpTestingController, HttpClientTestingModule } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed, waitForAsync, } from "@angular/core/testing";
 import { HomePage } from "./home.page";
@@ -9,7 +9,6 @@ import { ModalController, AngularDelegate } from '@ionic/angular';
 describe('HomePage', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
-  let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let modalController: ModalController;
 
@@ -21,7 +20,6 @@ describe('HomePage', () => {
 
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
-    httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
     modalController = TestBed.inject(ModalController);
   });
