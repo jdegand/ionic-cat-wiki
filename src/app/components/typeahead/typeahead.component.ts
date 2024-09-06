@@ -7,7 +7,6 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonLabel
 @Component({
   selector: 'app-typeahead',
   templateUrl: 'typeahead.component.html',
-  styleUrls: ['./typeahead.component.scss'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonListHeader, IonSearchbar, IonButton, IonButtons, IonCheckbox, NgFor, IonRadioGroup, IonRadio, TitleCasePipe]
 })

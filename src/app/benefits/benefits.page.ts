@@ -4,7 +4,6 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonAccordion, IonAccordion
 @Component({
   selector: 'app-benefits',
   templateUrl: './benefits.page.html',
-  styleUrls: ['./benefits.page.scss'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonAccordion, IonAccordionGroup, IonItem, IonLabel]
 })

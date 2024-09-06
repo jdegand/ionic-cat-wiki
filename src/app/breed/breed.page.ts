@@ -12,8 +12,7 @@ import { TitleCasePipe } from '@angular/common';
   selector: 'app-breed',
   standalone: true,
   imports: [BubbleComponent, IonContent, IonHeader, IonTitle, IonToolbar, TitleCasePipe, IonSpinner],
-  templateUrl: './breed.page.html',
-  styleUrl: './breed.page.scss'
+  templateUrl: './breed.page.html'
 })
 export class BreedPage implements OnInit {
   @Input() name = '';
