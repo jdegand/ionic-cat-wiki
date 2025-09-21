@@ -22,7 +22,7 @@ export class BreedPage implements OnInit {
   filteredImages: string[] = [];
   error: unknown;
 
-  constructor(private httpService: ApiHttpClientService) { }
+  constructor(private readonly httpService: ApiHttpClientService) { }
 
   retrieveBreedData() {
     this.httpService.getBreedBySearchTerm(this.name).pipe(

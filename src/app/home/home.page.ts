@@ -19,10 +19,9 @@ import { FooterComponent } from '../components/footer/footer.component';
   imports: [IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonInput, IonImg, IonButton, NgClass, RouterLink, FormsModule, IonList, IonLabel, IonModal, TypeaheadComponent, IonItem, IonGrid, IonRow, IonCol, FooterComponent],
 })
 export class HomePage implements OnInit {
-  //breeds: Breed[] = [];
   featuredBreeds: Breed[] = [];
 
-  constructor(private apiHttpClientService: ApiHttpClientService) {
+  constructor(private readonly apiHttpClientService: ApiHttpClientService) {
     addIcons({ searchOutline });
   }
 
